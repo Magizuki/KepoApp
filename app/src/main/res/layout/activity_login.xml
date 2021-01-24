@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/logo_sm"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="160dp"/>
 
     <TextView
         android:id="@+id/introTxt"
@@ -30,13 +30,49 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/introTxt"
+        android:layout_centerInParent="true"
         >
 
+        <EditText
+            android:background="@drawable/edit_text_customdesign"
+            android:layout_marginTop="50dp"
+            android:id="@+id/usernameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Username"
+            android:padding="5dp"/>
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_customdesign"
+            android:id="@+id/passwordTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:padding="5dp"
+            />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:background="@drawable/loginbutton"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
-
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="2021 by myself"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
