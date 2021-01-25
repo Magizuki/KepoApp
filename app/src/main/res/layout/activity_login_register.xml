@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".view.LoginRegisterActivity"
     android:orientation="vertical">
 
     <ImageView
@@ -61,7 +61,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOGIN"
-            android:background="@drawable/loginbutton"
+            android:background="@drawable/loginregisterbutton"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:background="@drawable/loginregisterbutton"
             android:textColor="@color/white"
             android:layout_gravity="center"/>
 

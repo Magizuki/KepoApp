@@ -1,4 +1,4 @@
-package com.example.kepoapp;
+package com.example.kepoapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+
+
+import com.example.kepoapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginRegisterActivity.class);
                 startActivity(intent);
                 finish();
             }
