@@ -60,7 +60,7 @@
             android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="@string/login"
             android:background="@drawable/loginregisterbutton"
             android:textColor="@color/white"
             android:layout_gravity="center"/>
@@ -70,7 +70,7 @@
             android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTER"
+            android:text="@string/register"
             android:background="@drawable/loginregisterbutton"
             android:textColor="@color/white"
             android:layout_gravity="center"/>
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="2021 by myself"
+        android:text="@string/_2021_by_myself"
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"/>
 
