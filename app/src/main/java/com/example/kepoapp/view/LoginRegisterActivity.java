@@ -2,6 +2,7 @@ package com.example.kepoapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.example.kepoapp.R;
 import com.example.kepoapp.controller.AuthController;
 import com.example.kepoapp.controller.DatabaseHelper;
+import com.example.kepoapp.model.SharedPref;
+import com.example.kepoapp.model.User;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -19,6 +22,7 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
 
     private EditText username, password;
     private Button login, register;
+    private SharedPref sharedPref;
     AuthController controller;
 
     @Override
@@ -26,6 +30,8 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
         getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+        sharedPref = new SharedPref(LoginRegisterActivity.this);
+
 
         username = findViewById(R.id.usernameTxt);
         password = findViewById(R.id.passwordTxt);
@@ -35,14 +41,24 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
         login.setOnClickListener(this);
         register.setOnClickListener(this);
 
+        User user = sharedPref.load();
+        if(user.getId() != 0 || user.getUsername() != "" || user.getPassword() != ""){
+//            sharedPref.clearSharedPref();
+            Intent intent = new Intent(LoginRegisterActivity.this, MainMenuActivity.class);
+            intent.putExtra(MainMenuActivity.Extra_User, user);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     @Override
     public void onClick(View view) {
 
+        String Username = username.getText().toString();
+        String Password = password.getText().toString();
+
         if(view.equals(register)){
-            String Username = username.getText().toString();
-            String Password = password.getText().toString();
 
             controller = new AuthController();
 
@@ -63,7 +79,29 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
 
         }
         else if(view.equals(login)){
-            Toast.makeText(LoginRegisterActivity.this,"tes",Toast.LENGTH_LONG).show();
+
+            User user;
+            controller = new AuthController();
+            //If Field is empty
+            if(username.getText().toString().equals("") || password.getText().toString().equals("")){
+                BottomSheet dialog = new BottomSheet(1);
+                dialog.show(getSupportFragmentManager(), "TAG");
+                return;
+            }
+            user = controller.validateLoginData(Username, Password, this);
+            //If Login Data not valid
+            if(user.getId() == 0 && user.getUsername().equals("fail") && user.getPassword().equals("fail")){
+                BottomSheet dialog = new BottomSheet(3);
+                dialog.show(getSupportFragmentManager(), "TAG");
+            }
+            else{
+                sharedPref.save(user);
+                Intent intent = new Intent(LoginRegisterActivity.this, MainMenuActivity.class);
+                intent.putExtra(MainMenuActivity.Extra_User, user);
+                startActivity(intent);
+                finish();
+            }
+
         }
 
     }

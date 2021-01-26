@@ -44,6 +44,9 @@ public class BottomSheet extends BottomSheetDialogFragment {
         else if(flag == 2){
             error.setText("Username already exist");
         }
+        else if(flag == 3){
+            error.setText("Username or Password are not valid");
+        }
 
         return views;
     }

@@ -1,9 +1,15 @@
 package com.example.kepoapp.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int id;
     private String Username, Password;
+
+    public User(){
+
+    }
 
     public User(int id, String username, String password) {
         this.id = id;

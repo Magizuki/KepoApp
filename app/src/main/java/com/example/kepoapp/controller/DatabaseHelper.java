@@ -8,16 +8,17 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.kepoapp.model.User;
 import com.example.kepoapp.view.LoginRegisterActivity;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public DatabaseHelper getInstance(DatabaseHelper db, Context ctx){
-        if(db == null){
-            return new DatabaseHelper(ctx);
-        }
-        return db;
-    }
+//    public DatabaseHelper getInstance(DatabaseHelper db, Context ctx){
+//        if(db == null){
+//            return new DatabaseHelper(ctx);
+//        }
+//        return db;
+//    }
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "KepoApp.db", null, 1);
@@ -67,6 +68,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return true;
+    }
+
+    public User login(String username, String password){
+
+        String query = "SELECT * FROM Users where Username = " + "'" + username + "' AND Password = '" + password + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+        User user;
+        if(cursor.getCount() > 1){
+
+
+            if(cursor.moveToFirst()){
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+                String Password = cursor.getString(2);
+
+                user = new User(id, Name, Password);
+                cursor.close();
+                db.close();
+
+                return user;
+            }
+
+        }
+
+        user = new User(0, "fail", "fail");
+        cursor.close();
+        db.close();
+
+        return user;
     }
 
 
