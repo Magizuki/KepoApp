@@ -20,83 +20,193 @@
             android:src="@drawable/mainmenu_customeheader"/>
 
         <TextView
+            android:id="@+id/introMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
             android:layout_marginTop="25dp"
             android:fontFamily="sans-serif"
             android:textSize="20sp"
             android:textStyle="bold"
+            tools:text="Welcome Anonymous"
             />
-
-
-
-        <Button
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="100dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="16dp"
+            android:clickable="true"
             android:id="@+id/MyToDoBtn"
-            android:layout_width="350dp"
-            android:layout_height="90dp"
-            android:background="@drawable/card2"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="90dp"
-            android:text="My ToDo"
-            android:textColor="@color/light_gray"
-            android:drawableLeft="@drawable/ic_todo"
-            android:drawableRight="@drawable/ic_todo"
-            />
+            >
 
-<!--        <TextView-->
-<!--            android:id="@+id/MyToDoText"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="My ToDo"-->
-<!--            android:textColor="@color/light_gray"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:layout_marginTop="120dp"-->
-<!--            -->
-<!--            />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_todo"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My ToDo"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginLeft="118dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_todo"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="122dp"/>
 
 
-        <Button
-            android:id="@+id/SearchToDo"
-            android:layout_width="350dp"
-            android:layout_height="90dp"
-            android:background="@drawable/card2"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="180dp"
-            android:text="Search ToDo"
-            android:drawableLeft="@drawable/ic_search"
-            android:drawableRight="@drawable/ic_search"
-            android:textColor="@color/light_gray"/>
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/SearchUser"
-            android:layout_width="350dp"
-            android:layout_height="90dp"
-            android:background="@drawable/card2"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="270dp"
-            android:text="Search User"
-            android:drawableLeft="@drawable/ic_people"
-            android:drawableRight="@drawable/ic_people"
-            android:textColor="@color/light_gray"/>
+        </androidx.cardview.widget.CardView>
 
-        <Button
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="200dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="16dp"
+            android:clickable="true"
+            android:id="@+id/SearchToDoBtn"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search ToDo"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginLeft="103dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="110dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="300dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="16dp"
+            android:clickable="true"
+            android:id="@+id/SearchUserBtn"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_people"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search User"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginLeft="103dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_people"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="122dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="400dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="16dp"
+            android:clickable="true"
             android:id="@+id/ProfileBtn"
-            android:layout_width="350dp"
-            android:layout_height="90dp"
-            android:background="@drawable/card2"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="360dp"
-            android:text="Profile"
-            android:drawableLeft="@drawable/ic_face"
-            android:drawableRight="@drawable/ic_face"
-            android:textColor="@color/light_gray"/>
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_face"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginLeft="122dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_face"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="130dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:layout_width="match_parent"
