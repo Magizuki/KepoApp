@@ -60,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="My ToDo"
+                    android:text="@string/my_todo"
                     android:layout_marginTop="27dp"
                     android:layout_marginLeft="118dp"/>
 
@@ -104,7 +104,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Search ToDo"
+                    android:text="@string/search_todo"
                     android:layout_marginTop="27dp"
                     android:layout_marginLeft="103dp"/>
 
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Search User"
+                    android:text="@string/search_user"
                     android:layout_marginTop="27dp"
                     android:layout_marginLeft="103dp"/>
 
@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:layout_marginTop="27dp"
                     android:layout_marginLeft="122dp"/>
 

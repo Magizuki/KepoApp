@@ -4,4 +4,8 @@
     <string name="_2021_by_myself">2021 by myself</string>
     <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
+    <string name="my_todo">My ToDo</string>
+    <string name="search_todo">Search ToDo</string>
+    <string name="search_user">Search User</string>
+    <string name="profile">Profile</string>
 </resources>

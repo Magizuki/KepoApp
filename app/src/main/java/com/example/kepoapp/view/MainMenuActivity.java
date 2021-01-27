@@ -54,6 +54,7 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenuActivity.this, ProfileActivity.class);
+                intent.putExtra(Extra_User, user);
                 startActivity(intent);
             }
         });

@@ -43,7 +43,7 @@ public class LoginRegisterActivity extends AppCompatActivity implements View.OnC
 
         User user = sharedPref.load();
         if(user.getId() != 0 || user.getUsername() != "" || user.getPassword() != ""){
-            sharedPref.clearSharedPref();
+//            sharedPref.clearSharedPref();
             Intent intent = new Intent(LoginRegisterActivity.this, MainMenuActivity.class);
             intent.putExtra(MainMenuActivity.Extra_User, user);
             startActivity(intent);
