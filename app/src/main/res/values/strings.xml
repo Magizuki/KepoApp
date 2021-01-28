@@ -8,4 +8,7 @@
     <string name="search_todo">Search ToDo</string>
     <string name="search_user">Search User</string>
     <string name="profile">Profile</string>
+    <string name="profile">Profile</string>
+    <string name="my_todo">My ToDo</string>
+    <string name="no_data">No Data</string>
 </resources>

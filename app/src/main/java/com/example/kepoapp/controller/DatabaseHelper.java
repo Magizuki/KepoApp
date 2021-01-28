@@ -8,8 +8,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.kepoapp.model.ToDoList;
 import com.example.kepoapp.model.User;
 import com.example.kepoapp.view.LoginRegisterActivity;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -29,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String create_UserTable_query = "CREATE TABLE Users ( id INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT , Password TEXT)";
         db.execSQL(create_UserTable_query);
-        String create_ToDoListTable_query = "CREATE TABLE ToDoLists (id INTEGER PRIMARY KEY AUTOINCREMENT, UserID INTEGER, LastEditDate DATE, ToDoName TEXT, DESCRIPTION TEXT, FOREIGN KEY (UserID) REFERENCES Users(id))";
+        String create_ToDoListTable_query = "CREATE TABLE ToDoLists (id INTEGER PRIMARY KEY AUTOINCREMENT, UserID INTEGER, LastEditDate TEXT, ToDoName TEXT, DESCRIPTION TEXT, FOREIGN KEY (UserID) REFERENCES Users(id))";
         db.execSQL(create_ToDoListTable_query);
 
     }
@@ -68,6 +71,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return true;
+    }
+
+    public boolean findMyToDobyUserId(int id){
+
+        String query = "SELECT * FROM ToDoLists where UserID = " + "'" + id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.getCount() > 1){
+            cursor.close();
+            db.close();
+            return true;
+        }
+
+        cursor.close();
+        db.close();
+        return false;
+
+
+    }
+
+    public ArrayList<ToDoList> getAllMyToDoList(int id){
+
+        ArrayList<ToDoList> toDoLists = new ArrayList<>();
+        String query = "SELECT * FROM ToDoLists where UserID = " + "'" + id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int ToDoID = cursor.getInt(0);
+                int UserID = cursor.getInt(1);
+                String lastupdate = cursor.getString(2);
+                String name = cursor.getString(3);
+                String desc = cursor.getString(4);
+                toDoLists.add(new ToDoList(ToDoID, UserID, lastupdate, name, desc));
+            }while (cursor.moveToNext());
+
+        }
+
+        return toDoLists;
     }
 
     public User login(String username, String password){

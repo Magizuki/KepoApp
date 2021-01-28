@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MyToDoActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MyToDoActivity"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:id="@+id/BackBtn"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_arrow_back"
+            />
+
+        <TextView
+            android:id="@+id/ProfileTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_todo"
+            android:layout_below="@+id/BackBtn"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/MyToDoDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Here all your todos!"
+            android:layout_below="@+id/ProfileTitle"
+            android:layout_marginTop="10dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/MyToDoRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/MyToDoDesc"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <ImageButton
+            android:id="@+id/AddBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_add"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/custom_addbtn"/>
+
+        <TextView
+            android:id="@+id/NoDataView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</layout>
