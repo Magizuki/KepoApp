@@ -18,7 +18,7 @@
             />
 
         <TextView
-            android:id="@+id/ProfileTitle"
+            android:id="@+id/MyToDoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_todo"
@@ -33,8 +33,8 @@
             android:id="@+id/MyToDoDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Here all your todos!"
-            android:layout_below="@+id/ProfileTitle"
+            android:text="@string/here_all_your_todos"
+            android:layout_below="@+id/MyToDoTitle"
             android:layout_marginTop="10dp"
             />
 

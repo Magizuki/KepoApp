@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.AddUpdateMyToDoActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.AddUpdateMyToDoActivity"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:id="@+id/BackBtn"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_arrow_back"
+            />
+
+        <TextView
+            android:id="@+id/CreateUpdateToDoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            tools:text="Testing"
+            android:layout_below="@+id/BackBtn"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/CreateUpdateToDoDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_todo_will_be_visible_to_others"
+            android:layout_below="@+id/CreateUpdateToDoTitle"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/TitleTxt"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/edit_text_customdesign"
+            android:layout_below="@+id/CreateUpdateToDoDesc"
+            android:hint="Title"/>
+
+        <EditText
+            android:id="@+id/DescriptionTxt"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit_text_customdesign"
+            android:layout_below="@+id/TitleTxt"
+            android:hint="Description"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DescriptionTxt"
+            android:layout_alignParentEnd="true"
+            tools:text="Test"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DescriptionTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            tools:text="Test"
+            android:textColor="@color/design_default_color_error"/>
+
+        <ImageButton
+            android:id="@+id/CheckBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_check"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/custom_addbtn"/>
+
+    </RelativeLayout>
+
+</layout>
