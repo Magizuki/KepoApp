@@ -13,12 +13,14 @@ import android.widget.Toast;
 import com.example.kepoapp.R;
 import com.example.kepoapp.controller.ToDoController;
 import com.example.kepoapp.databinding.ActivityAddUpdateMyToDoBinding;
+import com.example.kepoapp.model.ToDoList;
 import com.example.kepoapp.model.User;
 
 public class AddUpdateMyToDoActivity extends AppCompatActivity {
 
     private ActivityAddUpdateMyToDoBinding binding;
     private User user;
+    private ToDoList toDoList;
     private ToDoController controller;
 
     @Override
@@ -28,6 +30,7 @@ public class AddUpdateMyToDoActivity extends AppCompatActivity {
 
         String title = getIntent().getStringExtra("CreateUpdateTitle");
         user = (User) getIntent().getSerializableExtra(MainMenuActivity.Extra_User);
+        toDoList = (ToDoList) getIntent().getSerializableExtra("ToDoDetail");
 
         binding.CreateUpdateToDoTitle.setText(title);
         binding.LengthView.setText("0/0");
@@ -55,6 +58,8 @@ public class AddUpdateMyToDoActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else if(binding.CreateUpdateToDoTitle.getText().toString().equals("Update ToDo")){
+
+
 
                     }
 
@@ -106,7 +111,11 @@ public class AddUpdateMyToDoActivity extends AppCompatActivity {
                     finish();
                 }
                 else if(binding.CreateUpdateToDoTitle.getText().toString().equals("Update ToDo")){
-
+                    intent = new Intent(AddUpdateMyToDoActivity.this, DetailToDoActivity.class);
+                    intent.putExtra(MainMenuActivity.Extra_User, user);
+                    intent.putExtra("ToDoDetail", toDoList);
+                    startActivity(intent);
+                    finish();
                 }
 
             }
