@@ -29,6 +29,21 @@ public class ToDoController {
 
     }
 
+    public int checkData(String title, String description){
+
+        if(title.equals("") || description.equals("")){
+            return 1;
+        }
+        else if(description.length() > 100){
+            return 2;
+        }
+        return 0;
+    }
+
+    public void createMyToDo(int userID, String title, String description){
+        dbhelper.createMyToDo(userID, title, description);
+    }
+
 
 
 

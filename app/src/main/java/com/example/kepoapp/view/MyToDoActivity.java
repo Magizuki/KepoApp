@@ -64,7 +64,7 @@ public class MyToDoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MyToDoActivity.this, AddUpdateMyToDoActivity.class);
                 intent.putExtra(MainMenuActivity.Extra_User, user);
-                intent.putExtra("", "Create ToDo");
+                intent.putExtra("CreateUpdateTitle", "Create ToDo");
                 startActivity(intent);
             }
         });

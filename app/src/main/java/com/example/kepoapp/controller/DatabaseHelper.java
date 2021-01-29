@@ -12,7 +12,12 @@ import com.example.kepoapp.model.ToDoList;
 import com.example.kepoapp.model.User;
 import com.example.kepoapp.view.LoginRegisterActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -24,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    }
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "KepoApp.db", null, 1);
+        super(context, "KepoApps.db", null, 1);
     }
 
     @Override
@@ -32,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String create_UserTable_query = "CREATE TABLE Users ( id INTEGER PRIMARY KEY AUTOINCREMENT, Username TEXT , Password TEXT)";
         db.execSQL(create_UserTable_query);
-        String create_ToDoListTable_query = "CREATE TABLE ToDoLists (id INTEGER PRIMARY KEY AUTOINCREMENT, UserID INTEGER, LastEditDate TEXT, ToDoName TEXT, DESCRIPTION TEXT, FOREIGN KEY (UserID) REFERENCES Users(id))";
+        String create_ToDoListTable_query = "CREATE TABLE ToDoLists (id INTEGER PRIMARY KEY AUTOINCREMENT, UserID INTEGER, LastEditDate TEXT, ToDoName TEXT, Description TEXT, FOREIGN KEY (UserID) REFERENCES Users(id))";
         db.execSQL(create_ToDoListTable_query);
 
     }
@@ -150,6 +155,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return user;
+    }
+
+    public void createMyToDo(int userID, String title, String description){
+
+        Calendar calendar = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
+        String date = dateFormat.format(calendar.getTime());
+
+        String insert_ToDoListTable_query = "INSERT INTO ToDoLists(UserID, LastEditDate, ToDoName, Description) VALUES ('"+userID+"', '" +date+ "', '" +title+ "', '" +description+ "'); ";
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL(insert_ToDoListTable_query);
+
+        db.close();
+
     }
 
 
