@@ -58,9 +58,10 @@ public class AddUpdateMyToDoActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else if(binding.CreateUpdateToDoTitle.getText().toString().equals("Update ToDo")){
-
-
-
+                        controller.updateMyToDo(toDoList.getId(), title, description);
+                        Intent intent = new Intent(AddUpdateMyToDoActivity.this, MyToDoActivity.class);
+                        intent.putExtra(MainMenuActivity.Extra_User, user);
+                        startActivity(intent);
                     }
 
                 }

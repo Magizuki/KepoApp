@@ -171,5 +171,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void updateMyToDo(int id, String title, String description){
+
+        Calendar calendar = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
+        String date = dateFormat.format(calendar.getTime());
+
+        String update_ToDoListTable_query = "UPDATE ToDoLists SET LastEditDate = '" + date + "' , ToDoName = '" + title + "' , Description = '" + description + "' WHERE id = '" + id + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL(update_ToDoListTable_query);
+
+        db.close();
+
+    }
+
 
 }

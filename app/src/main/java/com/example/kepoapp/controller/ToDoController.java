@@ -44,9 +44,9 @@ public class ToDoController {
         dbhelper.createMyToDo(userID, title, description);
     }
 
-
-
-
+    public void updateMyToDo(int id, String title, String description){
+        dbhelper.updateMyToDo(id, title, description);
+    }
 
 
 

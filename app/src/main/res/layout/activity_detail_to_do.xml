@@ -60,7 +60,7 @@
             android:id="@+id/TitleView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="@string/title"
             android:layout_below="@+id/LastUpdatedTitle"
             android:layout_marginTop="40dp"
             />
@@ -80,7 +80,7 @@
             android:id="@+id/DescriptionView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="@string/description"
             android:layout_below="@+id/TitleView"
             android:layout_marginTop="50dp"
             />
