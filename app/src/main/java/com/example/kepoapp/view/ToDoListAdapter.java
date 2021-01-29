@@ -43,6 +43,13 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
         return new ViewHolder(databinding);
     }
 
+    public void updateData(){
+        int userID = toDoLists.get(0).getId();
+        toDoLists.clear();
+        toDoLists.addAll(controller.getAllMyToDoList(userID));
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ToDoList toDoList = toDoLists.get(position);
@@ -58,16 +65,13 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
                     snackbar.setAction("Delete", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-//                            DeleteDialog dialog = new DeleteDialog(ctx, selectedToDoList);
                             AlertDialog dialog = new AlertDialog.Builder(ctx).setTitle("Delete ToDo")
                                     .setMessage("Are you sure you want to delete all this todos ?")
                                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             controller.deleteMyToDo(selectedToDoList);
-                                            Toast.makeText(ctx,"Delete Success", Toast.LENGTH_LONG).show();
-                                            notifyDataSetChanged();
-                                            snackbar.dismiss();
+                                            updateData();
                                             dialogInterface.cancel();
                                         }
                                     })
