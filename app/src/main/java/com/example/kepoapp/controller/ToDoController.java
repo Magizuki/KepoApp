@@ -48,6 +48,9 @@ public class ToDoController {
         dbhelper.updateMyToDo(id, title, description);
     }
 
+    public void deleteMyToDo(ArrayList<ToDoList> toDoLists){
+        dbhelper.deleteMyToDo(toDoLists);
+    }
 
 
 }

@@ -63,9 +63,7 @@ public class AddUpdateMyToDoActivity extends AppCompatActivity {
                         intent.putExtra(MainMenuActivity.Extra_User, user);
                         startActivity(intent);
                     }
-
                 }
-
             }
         });
 
