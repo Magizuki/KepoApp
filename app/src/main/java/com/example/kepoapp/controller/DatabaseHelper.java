@@ -195,5 +195,140 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public ArrayList<ToDoList> getAllToDoList(int id){
+
+        ArrayList<ToDoList> toDoLists = new ArrayList<>();
+        String query = "SELECT * FROM ToDoLists where UserID != " + "'" + id + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int ToDoID = cursor.getInt(0);
+                int UserID = cursor.getInt(1);
+                String lastupdate = cursor.getString(2);
+                String name = cursor.getString(3);
+                String desc = cursor.getString(4);
+                toDoLists.add(new ToDoList(ToDoID, UserID, lastupdate, name, desc));
+            }while (cursor.moveToNext());
+
+        }
+
+        return toDoLists;
+    }
+
+    public User getUser(int UserID){
+
+        String query = "SELECT * FROM Users where id = '" + UserID + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+
+        if(cursor.moveToFirst()){
+            int id = cursor.getInt(0);
+            String Name = cursor.getString(1);
+            String Password = cursor.getString(2);
+
+
+            cursor.close();
+            db.close();
+
+            return new User(id, Name, Password);
+        }
+
+
+
+        cursor.close();
+        db.close();
+
+        return null;
+
+    }
+
+    public User getUserByName(String name){
+
+        String query = "SELECT * FROM Users where Username = '" + name + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+        User user;
+
+        if(cursor.moveToFirst()){
+            int id = cursor.getInt(0);
+            String Name = cursor.getString(1);
+            String Password = cursor.getString(2);
+
+            user = new User(id, Name, Password);
+            cursor.close();
+            db.close();
+
+            return user;
+        }
+
+
+
+        user = new User(0, "fail", "fail");
+        cursor.close();
+        db.close();
+
+        return user;
+
+    }
+
+    public ArrayList<ToDoList> getAllToDoListByName(String ToDoname){
+        ArrayList<ToDoList> toDoLists = new ArrayList<>();
+        String query = "SELECT * FROM ToDoLists where ToDoName = " + "'" + ToDoname + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int ToDoID = cursor.getInt(0);
+                int UserID = cursor.getInt(1);
+                String lastupdate = cursor.getString(2);
+                String name = cursor.getString(3);
+                String desc = cursor.getString(4);
+                toDoLists.add(new ToDoList(ToDoID, UserID, lastupdate, name, desc));
+            }while (cursor.moveToNext());
+
+        }
+
+        return toDoLists;
+    }
+
+    public ArrayList<ToDoList> getAllToDoListByNameAndUserID(String ToDoname, int UserId){
+        ArrayList<ToDoList> toDoLists = new ArrayList<>();
+        String query = "SELECT * FROM ToDoLists where ToDoName = " + "'" + ToDoname + "' OR UserID = '" + UserId + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int ToDoID = cursor.getInt(0);
+                int UserID = cursor.getInt(1);
+                String lastupdate = cursor.getString(2);
+                String name = cursor.getString(3);
+                String desc = cursor.getString(4);
+                toDoLists.add(new ToDoList(ToDoID, UserID, lastupdate, name, desc));
+            }while (cursor.moveToNext());
+
+        }
+
+        return toDoLists;
+    }
+
 
 }

@@ -52,5 +52,19 @@ public class ToDoController {
         dbhelper.deleteMyToDo(toDoLists);
     }
 
+    public ArrayList<ToDoList> getAllToDoList(int id){
+        return dbhelper.getAllToDoList(id);
+    }
+
+    public ArrayList<ToDoList> getAllToDoListByName(String name){
+        return dbhelper.getAllToDoListByName(name);
+    }
+
+    public ArrayList<ToDoList> getAllToDoListByNameAndUserID(String name, int id){
+        return dbhelper.getAllToDoListByNameAndUserID(name, id);
+    }
+
+
+
 
 }
