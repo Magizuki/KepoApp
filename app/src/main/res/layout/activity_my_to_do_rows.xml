@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -41,16 +42,33 @@
                     android:layout_marginLeft="15dp"
                     />
 
-                <TextView
-                    android:id="@+id/LastEditDateView"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{todo.date}"
-                    android:textSize="13sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="15dp"
-                    />
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_edited"
+                        android:textSize="13sp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="15dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/LastEditDateView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{todo.date}"
+                        android:textSize="13sp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="2dp"
+                        tools:text="tes"
+                        />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 

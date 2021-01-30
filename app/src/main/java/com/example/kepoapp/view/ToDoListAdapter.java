@@ -130,23 +130,6 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
                     ctx.startActivity(intent);
                 }
             });
-//
-//            binding.MyToDoCheck.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if(binding.MyToDoCheck.isChecked()){
-//                        selectedToDoList.add(toDoLists.get(getAdapterPosition()));
-//                    }
-//                    else{
-//                        for(int a = 0; a < selectedToDoList.size(); a++){
-//                            if(selectedToDoList.get(a).getId() == toDoLists.get(getAdapterPosition()).getId()){
-//                                selectedToDoList.remove(a);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//            });
 
         }
     }

@@ -26,6 +26,10 @@ public class DetailToDoActivity extends AppCompatActivity {
         ToDoList toDoDetail = (ToDoList) getIntent().getSerializableExtra("ToDoDetail");
         binding.setTodo(toDoDetail);
 
+        if(toDoDetail.getUserID() != user.getId()){
+            binding.UpdateBtn.setVisibility(View.INVISIBLE);
+        }
+
         binding.UpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,11 +44,23 @@ public class DetailToDoActivity extends AppCompatActivity {
         binding.BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DetailToDoActivity.this, MyToDoActivity.class);
-                intent.putExtra(MainMenuActivity.Extra_User, user);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
+
+                if(toDoDetail.getUserID() != user.getId()){
+                    Intent intent = new Intent(DetailToDoActivity.this, SearchToDoActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(DetailToDoActivity.this, MyToDoActivity.class);
+                    intent.putExtra(MainMenuActivity.Extra_User, user);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
             }
         });
 
