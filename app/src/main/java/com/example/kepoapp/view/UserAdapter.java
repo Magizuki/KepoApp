@@ -9,73 +9,65 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.example.kepoapp.databinding.ActivitySearchToDoRowsBinding;
-import com.example.kepoapp.model.ToDoList;
+import com.example.kepoapp.databinding.ActivitySearchUserBinding;
+import com.example.kepoapp.databinding.ActivitySearchUserRowsBinding;
 import com.example.kepoapp.model.User;
 
 import java.util.ArrayList;
 
-public class UserToDoAdapter extends RecyclerView.Adapter<UserToDoAdapter.ViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    private ArrayList<ToDoList> toDoLists;
     private ArrayList<User> users;
     private Context ctx;
 
-    public UserToDoAdapter(Context ctx, ArrayList<ToDoList> toDoLists, ArrayList<User> users){
+    public UserAdapter(Context ctx, ArrayList<User> users){
         this.ctx = ctx;
-        this.toDoLists = toDoLists;
         this.users = users;
+    }
+
+    public void update(ArrayList<User> newUser){
+        users.clear();
+        users.addAll(newUser);
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ActivitySearchToDoRowsBinding databinding = ActivitySearchToDoRowsBinding.inflate(inflater, parent, false);
+        ActivitySearchUserRowsBinding databinding = ActivitySearchUserRowsBinding.inflate(inflater, parent, false);
         return new ViewHolder(databinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ToDoList toDoList = toDoLists.get(position);
         User user = users.get(position);
-        holder.binding.setTodo(toDoList);
         holder.binding.setUser(user);
-    }
-
-    public void update(ArrayList<ToDoList> newToDoLists, ArrayList<User> newUsers){
-        users.clear();
-        toDoLists.clear();
-        toDoLists.addAll(newToDoLists);
-        users.addAll(newUsers);
-        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return toDoLists.size();
+        return users.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private ActivitySearchToDoRowsBinding binding;
-
-        public ViewHolder(@NonNull ActivitySearchToDoRowsBinding binding) {
+        private ActivitySearchUserRowsBinding binding;
+        public ViewHolder(@NonNull ActivitySearchUserRowsBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 
             binding.Item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToDoList ToDo = toDoLists.get(getAdapterPosition());
-                    Intent intent = new Intent(ctx, DetailToDoActivity.class);
-                    intent.putExtra("ToDoDetail", ToDo);
+                    Intent intent = new Intent(ctx, UserDetailActivity.class);
+                    intent.putExtra("User", users.get(getAdapterPosition()));
                     ctx.startActivity(intent);
                 }
             });
 
         }
     }
+
 
 }

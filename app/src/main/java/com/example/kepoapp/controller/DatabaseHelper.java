@@ -218,7 +218,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         }
 
+        cursor.close();
+        db.close();
+
         return toDoLists;
+    }
+
+    public ArrayList<User> getAllUserList(int Userid){
+
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM Users where id != " + "'" + Userid + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+                String Password = cursor.getString(2);
+                users.add(new User(id, Name, Password));
+            }while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return users;
     }
 
     public User getUser(int UserID){
@@ -302,6 +332,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         }
 
+        cursor.close();
+        db.close();
+
         return toDoLists;
     }
 
@@ -326,6 +359,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
 
         }
+
+        cursor.close();
+        db.close();
 
         return toDoLists;
     }

@@ -46,10 +46,7 @@ public class DetailToDoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(toDoDetail.getUserID() != user.getId()){
-                    Intent intent = new Intent(DetailToDoActivity.this, SearchToDoActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
+                    onBackPressed();
                 }
                 else{
                     Intent intent = new Intent(DetailToDoActivity.this, MyToDoActivity.class);
@@ -57,12 +54,13 @@ public class DetailToDoActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
-
                 }
-
-
             }
         });
 
+
+
     }
+
+
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KepoApp">
-        <activity android:name=".view.DetailToDoActivity"></activity>
+        <activity android:name=".view.UserDetailActivity"></activity>
+        <activity android:name=".view.DetailToDoActivity" />
         <activity android:name=".view.AddUpdateMyToDoActivity" />
         <activity android:name=".view.ProfileActivity" />
         <activity android:name=".view.SearchUserActivity" />

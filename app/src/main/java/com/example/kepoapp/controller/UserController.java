@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.example.kepoapp.model.User;
 
+import java.util.ArrayList;
+
 public class UserController {
 
     private DatabaseHelper dbhelper;
@@ -18,5 +20,9 @@ public class UserController {
 
     public User getUserByName(String name){
         return dbhelper.getUserByName(name);
+    }
+
+    public ArrayList<User> getAllUserList(int Userid){
+        return dbhelper.getAllUserList(Userid);
     }
 }
