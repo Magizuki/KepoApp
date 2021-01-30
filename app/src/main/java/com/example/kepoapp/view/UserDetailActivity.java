@@ -45,12 +45,23 @@ public class UserDetailActivity extends AppCompatActivity {
         for (int a = 0; a < toDoLists.size(); a++) {
             users.add(Usercontroller.getUser(toDoLists.get(a).getUserID()));
         }
+
+        if(toDoLists.isEmpty()){
+            binding.NoDataView.setVisibility(View.VISIBLE);
+            binding.ToDoRV.setVisibility(View.INVISIBLE);
+        }
+        else if(!toDoLists.isEmpty()){
+            binding.NoDataView.setVisibility(View.INVISIBLE);
+            binding.ToDoRV.setVisibility(View.VISIBLE);
+
+            adapter = new UserToDoAdapter(this, toDoLists, users);
+            binding.ToDoRV.setLayoutManager(new LinearLayoutManager(this));
+            binding.ToDoRV.setAdapter(adapter);
+        }
         
         binding.countView.setText("Todos : " + toDoLists.size());
         
-        adapter = new UserToDoAdapter(this, toDoLists, users);
-        binding.ToDoRV.setLayoutManager(new LinearLayoutManager(this));
-        binding.ToDoRV.setAdapter(adapter);
+
 
         binding.BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override

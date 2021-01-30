@@ -31,11 +31,20 @@ public class SearchUserActivity extends AppCompatActivity {
         sharedPref = new SharedPref(this);
         User user = sharedPref.load();
         controller = new UserController(this);
-        users = controller.getAllUserList(user.getId());
+        users = controller.getAllUser(user.getUsername());
         adapter = new UserAdapter(this, users);
 
-        binding.UserRV.setLayoutManager(new LinearLayoutManager(this));
-        binding.UserRV.setAdapter(adapter);
+        if(users.isEmpty()){
+            binding.NoDataView.setVisibility(View.VISIBLE);
+            binding.UserRV.setVisibility(View.INVISIBLE);
+        }
+        else if(!users.isEmpty()){
+            binding.NoDataView.setVisibility(View.INVISIBLE);
+            binding.UserRV.setVisibility(View.VISIBLE);
+            binding.UserRV.setLayoutManager(new LinearLayoutManager(this));
+            binding.UserRV.setAdapter(adapter);
+
+        }
 
         binding.BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +65,19 @@ public class SearchUserActivity extends AppCompatActivity {
                 ArrayList<User> newUsers = new ArrayList<User>();
                 binding.ResultForView.setVisibility(View.VISIBLE);
                 binding.ResultForView.setText("Result '" + name + "'");
-                newUsers.add(newUser);
-                adapter.update(newUsers);
+
+                if(newUser == null){
+                    binding.NoDataView.setVisibility(View.VISIBLE);
+                    binding.UserRV.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    binding.NoDataView.setVisibility(View.INVISIBLE);
+                    binding.UserRV.setVisibility(View.VISIBLE);
+                    newUsers.add(newUser);
+                    adapter.update(newUsers);
+                }
+
+
             }
         });
 

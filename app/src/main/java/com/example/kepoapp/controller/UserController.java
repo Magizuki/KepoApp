@@ -25,4 +25,8 @@ public class UserController {
     public ArrayList<User> getAllUserList(int Userid){
         return dbhelper.getAllUserList(Userid);
     }
+
+    public ArrayList<User> getAllUser(String name){
+        return dbhelper.getAllUser(name);
+    }
 }

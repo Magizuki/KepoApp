@@ -280,6 +280,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<User> getAllUser(String name){
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM Users where Username != " + "'" + name + "' ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+                int id = cursor.getInt(0);
+                String Name = cursor.getString(1);
+                String Password = cursor.getString(2);
+                users.add(new User(id, Name, Password));
+            }while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return users;
+    }
+
     public User getUserByName(String name){
 
         String query = "SELECT * FROM Users where Username = '" + name + "' ;";
